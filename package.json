@@ -1,0 +1,9 @@
+{
+  "name": "github-finder-js",
+  "version": "1.0.0",
+  "description": "This is github finder app coded in vanilla js.",
+  "main": "index.js",
+  "repository": "https://github.com/robmi11/github-finder-js.git",
+  "author": "robmi11 <robert.mizianty@gmail.com>",
+  "license": "MIT"
+}
