@@ -1,1 +1,1 @@
-## This is vanill js version of github finder app
+## This is vanilla js version of github finder app
