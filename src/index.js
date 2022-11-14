@@ -1,4 +1,5 @@
 import Github from "./classes/github";
+import UI from "./classes/ui";
 import "./styles/style.css";
 import "bootswatch/dist/litera/bootstrap.min.css";
 
@@ -7,6 +8,7 @@ const year = new Date().getFullYear();
 document.getElementById("copy-year").textContent = year;
 
 const fetchUser = new Github();
+const ui = new UI();
 
 // Search Input keyup event listener
 const searchUser = document.getElementById("search-user");
@@ -19,14 +21,21 @@ searchUser.addEventListener("keyup", (event) => {
     fetchUser
       .getUser(searchText)
       .then((data) => {
-        if (data.profile.message === "Not Found") {
-          console.log("Not found");
+        console.log(data);
+        if (
+          data.profile.message === "Not Found" ||
+          data.profile.message.startsWith("API")
+        ) {
           // Show alert User Not Found
+          ui.showAlert("Nie znaleziono użytkownika", "alert alert-danger");
         } else {
-          console.log(data.profile);
           // Show User Profile
+          ui.showProfile(data.profile);
         }
       })
       .catch((error) => console.error(error));
+  } else {
+    // Clear profile
+    ui.clearProfile();
   }
 });

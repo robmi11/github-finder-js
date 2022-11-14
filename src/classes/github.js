@@ -7,10 +7,16 @@ class Github {
 
   async getUser(user) {
     const profileResponse = await fetch(
-      `${this.gitgub_url}/${user}?client_id=${this.client_id}&client_sevret=${this.client_secret}`
+      `${this.gitgub_url}/${user}?client_id=${this.client_id}&client_secret=${this.client_secret}`
     );
+
+    const reposResponse = await fetch(
+      `${this.gitgub_url}/${user}/repos?client_id=${this.client_id}&client_secret=${this.client_secret}`
+    );
+
+    const repos = await reposResponse.json();
     const profile = await profileResponse.json();
-    return { profile };
+    return { profile, repos };
   }
 }
 
