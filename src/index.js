@@ -1,7 +1,5 @@
 import "./styles/style.css";
+import "bootswatch/dist/litera/bootstrap.min.css";
 
-const div = document.createElement("div");
-const text = document.createElement("p");
-text.textContent = "Webpack works ha ha ha";
-div.appendChild(text);
-document.body.appendChild(div);
+const year = new Date().getFullYear();
+document.getElementById("copy-year").textContent = year;

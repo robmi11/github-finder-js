@@ -10,8 +10,27 @@
   </title>
 </head>
 
-<body>
-  <h1>Witaj w świecie webpack'a</h1>
+<body class="d-flex flex-column justify-content-between vh-100">
+  <div>
+    <nav class="nav navbar navbar-dark bg-primary mb-3">
+      <div class="container">
+        <a href="#" class="navbar-brand">Github Finder</a>
+      </div>
+    </nav>
+    <div class="container serachContainer mt-5">
+      <div class="search card card-body">
+        <h1>Szukaj użytkowników Github&apos;a</h1>
+        <p class="lead">Wprowadź nazwę użytkownika, aby pobrać informację.</p>
+        <input type="text" class="form-control" id="search-user" placeholder="Nazwa użytkownika...">
+      </div>
+      <br>
+      <div id="profile"></div>
+    </div>
+  </div>
+
+  <footer class="mt-5 p-3 text-center bg-light w-100">
+    Github Finder App in Vanilla JS &copy; <span id="copy-year"></span>
+  </footer>
 </body>
 
 </html>
