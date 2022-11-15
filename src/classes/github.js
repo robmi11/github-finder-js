@@ -1,3 +1,9 @@
+/**
+ * Class to fetch user profile
+ * @param user input
+ * @return user profile and latest repos
+ */
+
 class Github {
   constructor() {
     this.client_id = "e2ae76b6033abeca60b5";

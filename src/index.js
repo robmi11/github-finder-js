@@ -22,10 +22,8 @@ searchUser.addEventListener("keyup", (event) => {
       .getUser(searchText)
       .then((data) => {
         console.log(data);
-        if (
-          data.profile.message === "Not Found" ||
-          data.profile.message.startsWith("API")
-        ) {
+
+        if (data.profile.message === "Not Found") {
           // Show alert User Not Found
           ui.showAlert("Nie znaleziono użytkownika", "alert alert-danger");
         } else {

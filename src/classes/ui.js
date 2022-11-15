@@ -1,9 +1,16 @@
+/**
+ * Class to display user profile with user lates repos
+ * @param user profile info
+ * @return UI
+ */
 class UI {
   constructor() {
     this.profile = document.getElementById("profile");
   }
 
   showProfile(user) {
+    const activeFrom = new Date(user.created_at);
+    console.log(activeFrom.toLocaleDateString());
     this.profile.innerHTML = `
       <div class="card card-body mb-3">
         <div class="row">
@@ -39,8 +46,10 @@ class UI {
               <li class="list-group-item">Lokalizacj: ${
                 user.location ? user.location : "BRAK"
               }</li>
-              <li class="list-group-item">Od: ${
-                user.created_at ? user.created_at : "BRAK"
+              <li class="list-group-item">Na github&apos;ie od: ${
+                user.created_at
+                  ? new Date(user.created_at).toLocaleDateString()
+                  : "BRAK"
               }</li>
             </ul>
           </div>
