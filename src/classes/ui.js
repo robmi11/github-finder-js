@@ -8,9 +8,8 @@ class UI {
     this.profile = document.getElementById("profile");
   }
 
+  // Show github user profile
   showProfile(user) {
-    const activeFrom = new Date(user.created_at);
-    console.log(activeFrom.toLocaleDateString());
     this.profile.innerHTML = `
       <div class="card card-body mb-3">
         <div class="row">
@@ -20,7 +19,9 @@ class UI {
             }" />
             <a href="${
               user.html_url
-            }" class="btn btn-primary d-block rounded-1 mb-4" target="_blank">Profil</a>
+            }" class="btn btn-primary d-block rounded-1 mb-4" target="_blank">${
+      user.name ? user.name : "Profil"
+    }</a>
           </div>
           <div class="col-md-9">
             <span class="badge text-bg-primary ms-3">Repozytoria: ${
@@ -60,6 +61,30 @@ class UI {
     `;
   }
 
+  // Show user repos
+  showRepos(repos) {
+    let output = "";
+    repos.forEach((repo) => {
+      output += `
+        <div class="card card-body mb-2">
+          <div class="row">
+            <div class="col-md-6">
+              <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+            </div>
+            <div class="col-md-6">
+            <span class="badge text-bg-primary ms-3">Stars: ${repo.stargazers_count}</span>
+            <span class="badge text-bg-secondary ms-1">Watchers: ${repo.watchers_count}</span>
+            <span class="badge text-bg-success ms-1">Forks: ${repo.forks_count}</span>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+
+    document.getElementById("repos").innerHTML = output;
+  }
+
+  // Show error message
   showAlert(message, className) {
     this.clearAlert();
     const div = document.createElement("div");
@@ -74,6 +99,7 @@ class UI {
     }, 3000);
   }
 
+  // Clear Error Message
   clearAlert() {
     const currentAlert = document.querySelector(".alert");
 
@@ -82,6 +108,7 @@ class UI {
     }
   }
 
+  // Clear UI
   clearProfile() {
     this.profile.innerHTML = "";
   }
